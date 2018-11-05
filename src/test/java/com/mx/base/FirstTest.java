@@ -1,4 +1,4 @@
-package com.mx.tests;
+package com.mx.base;
 
 import com.herokuapp.LogInPage;
 import com.herokuapp.SecurePage;
@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import java.util.Map;
 
 public class FirstTest extends BaseTest {
 
@@ -27,8 +29,13 @@ public class FirstTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(dataProvider = "negativeLoginData")
-    public void negativeLogInTest(String username, String password, String expectedErrorMessage) {
+    @Test(dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class)
+    public void negativeLogInTest(Map<String, String> testData) {
+        //Data
+        String username = testData.get("username");
+        String password = testData.get("password");
+        String expectedErrorMessage = testData.get("expectedError");
+
         LogInPage logInPage = new LogInPage(driver);
         logInPage.open();
 
@@ -38,8 +45,8 @@ public class FirstTest extends BaseTest {
 
         //Verification
         Assert.assertTrue(errorMessage.contains(expectedErrorMessage),
-                "Actual and expected error messages are different. \nExpected: "+expectedErrorMessage+ "\nActual: "
-                + errorMessage);
+                "Actual and expected error messages are different. \nExpected: " + expectedErrorMessage + "\nActual: "
+                        + errorMessage);
 
     }
 }

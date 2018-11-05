@@ -1,4 +1,4 @@
-package com.mx.tests;
+package com.mx.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;

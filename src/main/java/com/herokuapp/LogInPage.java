@@ -1,17 +1,16 @@
 package com.herokuapp;
 
-import com.mx.tests.BasePageObject;
+import com.mx.base.BasePageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LogInPage extends BasePageObject {
 
-    private String logInPageUrl = "http://the-internet.herokuapp.com/login";
-
     By usernameLocator = By.id("username");
     By passwordLocator = By.cssSelector("input[name=password]");
     By loginButtonLocator = By.xpath("//button[@type='submit']");
     By errorMessageLocator = By.id("flash-messages");
+    private String logInPageUrl = "http://the-internet.herokuapp.com/login";
 
     public LogInPage(WebDriver driver) {
         super(driver);
@@ -28,7 +27,7 @@ public class LogInPage extends BasePageObject {
         return new SecurePage(driver);
     }
 
-    public void negativeLogIn(String username, String password){
+    public void negativeLogIn(String username, String password) {
         System.out.println("Entering username and password");
         find(usernameLocator).sendKeys(username);
         find(passwordLocator).sendKeys(password);
@@ -39,11 +38,11 @@ public class LogInPage extends BasePageObject {
         waitForErrorMessage();
     }
 
-    private void  waitForErrorMessage(){
+    private void waitForErrorMessage() {
         waitForVisibilityOf(errorMessageLocator, 10);
     }
 
-    public String getErrorMessageText(){
+    public String getErrorMessageText() {
         return find(errorMessageLocator).getText();
     }
 

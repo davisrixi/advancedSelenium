@@ -3,7 +3,7 @@
 <suite name="NegativeLogIn-Suite" verbose="1">
     <test name="NegativeLogIn-test">
         <classes>
-            <class name="com.mx.tests.FirstTest">
+            <class name="com.mx.base.FirstTest">
                 <methods>
                     <include name="negativeLogInTest"></include>
                 </methods>

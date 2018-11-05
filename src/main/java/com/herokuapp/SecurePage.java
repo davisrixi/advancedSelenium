@@ -1,6 +1,6 @@
 package com.herokuapp;
 
-import com.mx.tests.BasePageObject;
+import com.mx.base.BasePageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

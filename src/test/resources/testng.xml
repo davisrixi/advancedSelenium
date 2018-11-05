@@ -4,13 +4,13 @@
 
     <test name="First Test">
         <classes>
-            <class name="com.mx.tests.FirstTest"/>
+            <class name="com.mx.base.FirstTest"/>
         </classes>
     </test>
 
     <test name="Troubleshooting">
         <classes>
-            <class name="com.mx.tests.Troubleshooting">
+            <class name="com.mx.base.Troubleshooting">
                 <methods>
                     <include name="waitTest"></include>
                     <include name="visibilityTest"></include>
