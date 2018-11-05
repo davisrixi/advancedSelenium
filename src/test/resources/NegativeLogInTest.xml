@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="NegativeLogIn-Suite" verbose="1">
+    <test name="NegativeLogIn-test">
+        <classes>
+            <class name="com.mx.tests.FirstTest">
+                <methods>
+                    <include name="negativeLogInTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

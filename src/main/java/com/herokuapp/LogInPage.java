@@ -11,17 +11,11 @@ public class LogInPage extends BasePageObject {
     By usernameLocator = By.id("username");
     By passwordLocator = By.cssSelector("input[name=password]");
     By loginButtonLocator = By.xpath("//button[@type='submit']");
-
+    By errorMessageLocator = By.id("flash-messages");
 
     public LogInPage(WebDriver driver) {
         super(driver);
     }
-
-
-    public void open() {
-        openUrl(logInPageUrl);
-    }
-
 
     public SecurePage logIn(String username, String password) {
         System.out.println("Entering username and password");
@@ -32,6 +26,29 @@ public class LogInPage extends BasePageObject {
         find(loginButtonLocator).click();
 
         return new SecurePage(driver);
+    }
+
+    public void negativeLogIn(String username, String password){
+        System.out.println("Entering username and password");
+        find(usernameLocator).sendKeys(username);
+        find(passwordLocator).sendKeys(password);
+
+        System.out.println("Clicking Login button");
+        find(loginButtonLocator).click();
+
+        waitForErrorMessage();
+    }
+
+    private void  waitForErrorMessage(){
+        waitForVisibilityOf(errorMessageLocator, 10);
+    }
+
+    public String getErrorMessageText(){
+        return find(errorMessageLocator).getText();
+    }
+
+    public void open() {
+        openUrl(logInPageUrl);
     }
 
 }
