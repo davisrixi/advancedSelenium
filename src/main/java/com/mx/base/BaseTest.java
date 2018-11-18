@@ -51,8 +51,6 @@ public class BaseTest {
 
         String testName = ctx.getCurrentXmlTest().getName();
         log = LogManager.getLogger(testName);
-
-
     }
 
     @AfterMethod

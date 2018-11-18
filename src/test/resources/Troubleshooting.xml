@@ -5,9 +5,6 @@
     <test name="Troubleshooting Test">
         <classes>
             <class name="com.mx.base.Troubleshooting">
-                <methods>
-                    <include name="waitTest"></include>
-                </methods>
             </class>
         </classes>
     </test>

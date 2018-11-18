@@ -27,7 +27,7 @@ public class Troubleshooting extends BaseTest {
         // Verifying Hello World text
         WebElement finishText = driver.findElement(By.id("finish"));
         String text = finishText.getText();
-        Assert.assertTrue(text.equals("Hello World!"), "'Hello World! text is not present on the page.'");
+        Assert.assertTrue(text.equals("Good by World!"), "'Good bye World! text is not present on the page.'");
     }
 
 
