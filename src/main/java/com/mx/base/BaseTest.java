@@ -1,11 +1,16 @@
 package com.mx.base;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class BaseTest {
@@ -21,6 +26,16 @@ public class BaseTest {
                 {"incorrectUsername", "SuperSecretPassword!", "Your username is invalid!"},
                 {"tomsmith", "IncorrectPassword", "Your password is invalid!"}
         };
+    }
+
+    protected void takeScreenshot(String fileName){
+        File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        String path = System.getProperty("user.dir")+ "//test-output//screenshots//" + fileName + ".png";
+        try {
+            FileUtils.copyFile(srcFile,new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @BeforeMethod(alwaysRun = true)

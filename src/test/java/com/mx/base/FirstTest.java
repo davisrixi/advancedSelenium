@@ -17,10 +17,12 @@ public class FirstTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         LogInPage loginPage = new LogInPage(driver, testConfig, log);
         loginPage.open();
+        takeScreenshot("Opened_LogIn_Page");
 
         // Clicking LogIn button
         SecurePage securePage = loginPage.logIn(username, password);
         securePage.waitForSecurePage(10);
+        takeScreenshot("Opened_Secure_Page");
 
         //Create expected message for IE
         String expectedMessage = "You logged into a secure area!";
