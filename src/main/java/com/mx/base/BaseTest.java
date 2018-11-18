@@ -2,6 +2,8 @@ package com.mx.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -24,8 +26,14 @@ public class BaseTest {
     protected void setUp(/*@Optional("IE") String browser*/) {
         //Creating driver
         //System.out.println("[Setting up driver: " + browser + "]");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-        driver = new ChromeDriver();
+        //System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        //driver = new ChromeDriver();
+
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
+        driver = new FirefoxDriver();
+
+        //driver = new SafariDriver();
+
     }
 
     @AfterMethod

@@ -8,7 +8,11 @@
         <parameter name="username" value="tomsmith"></parameter>
         <parameter name="password" value="SuperSecretPassword!"></parameter>
         <classes>
-            <class name="com.mx.base.FirstTest"/>
+            <class name="com.mx.base.FirstTest">
+                <methods>
+                    <include name="firstTest"></include>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
