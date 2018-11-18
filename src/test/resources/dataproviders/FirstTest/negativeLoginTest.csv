@@ -1,3 +1,0 @@
-no,username,password,expectedError
-1,incorrectUsername,SuperSecretPassword!,Your username is invalid!
-2,tomsmith,incorrectPassword,Your password is invalid!

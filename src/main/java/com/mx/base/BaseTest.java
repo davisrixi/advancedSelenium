@@ -15,7 +15,7 @@ public class BaseTest {
     public static Object[][] negativeLoginData() {
         return new Object[][]{
                 {"incorrectUsername", "SuperSecretPassword!", "Your username is invalid!"},
-                {"tomsmith", "incorrectPassword", "Your password is invalid!"}
+                {"tomsmith", "IncorrectPassword", "Your password is invalid!"}
         };
     }
 
@@ -34,6 +34,5 @@ public class BaseTest {
         System.out.println("[Closing driver");
         driver.quit();
     }
-
 
 }
