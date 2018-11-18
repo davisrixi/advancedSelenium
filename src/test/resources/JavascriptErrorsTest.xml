@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="JavaSriptErrors Suite" verbose="1">
+
+    <test name="JavaSriptErrors Test">
+        <classes>
+            <class name="com.mx.base.JavascriptErrors">
+            </class>
+        </classes>
+    </test>
+</suite>

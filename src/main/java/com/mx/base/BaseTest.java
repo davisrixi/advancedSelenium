@@ -6,12 +6,15 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 public class BaseTest {
 
@@ -28,11 +31,11 @@ public class BaseTest {
         };
     }
 
-    protected void takeScreenshot(String fileName){
-        File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String path = System.getProperty("user.dir")+ "//test-output//screenshots//" + fileName + ".png";
+    protected void takeScreenshot(String fileName) {
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String path = System.getProperty("user.dir") + "//test-output//screenshots//" + fileName + ".png";
         try {
-            FileUtils.copyFile(srcFile,new File(path));
+            FileUtils.copyFile(srcFile, new File(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,6 +60,12 @@ public class BaseTest {
         //Closing driver
         log.info("[Closing driver]");
         driver.quit();
+    }
+
+    protected List<LogEntry> getBrowserLogs() {
+        LogEntries log = driver.manage().logs().get("browser");
+        List<LogEntry> logList = log.getAll();
+        return logList;
     }
 
 }

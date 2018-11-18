@@ -4,7 +4,7 @@
 
     <test name="Troubleshooting Test">
         <classes>
-            <class name="com.packt.tests.Troubleshooting">
+            <class name="com.mx.base.Troubleshooting">
                 <methods>
                     <include name="waitTest"></include>
                 </methods>
