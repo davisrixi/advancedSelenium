@@ -31,7 +31,7 @@ public class BaseTest {
     @AfterMethod
     protected void tearDown() {
         //Closing driver
-        System.out.println("[Closing driver");
+        System.out.println("[Closing driver]");
         driver.quit();
     }
 

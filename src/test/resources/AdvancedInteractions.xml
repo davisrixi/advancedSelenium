@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AdvancedInteractions-Suite" verbose="1">
+    <test name="AdvancedInteractions-Test">
+        <classes>
+            <class name="com.mx.base.AdvancedInteractions">
+                <methods>
+                    <include name="iframeTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
