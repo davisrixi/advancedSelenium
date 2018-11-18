@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="LogIn-Suite" verbose="1">
+<suite name="LogIn-Suite" verbose="1" parallel="tests" thread-count="3">
     <parameter name="username" value="tomsmith"></parameter>
     <parameter name="password" value="SuperSecretPassword!"></parameter>
 

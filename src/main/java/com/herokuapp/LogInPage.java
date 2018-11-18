@@ -27,8 +27,7 @@ public class LogInPage extends BasePageObject {
         find(loginButtonLocator).click();
 
 
-
-        if(testConfig.get("browser").equals("firefox")){
+        if (testConfig.get("browser").equals("firefox")) {
             System.out.println("Additional click needs to be done in firefox");
             // code to click some kind of confirmation after LogIn button clicked
         }

@@ -24,11 +24,10 @@ public class FirstTest extends BaseTest {
 
         //Create expected message for IE
         String expectedMessage = "You logged into a secure area!";
-        if(testConfig.get("browser").equals("ie")){
+        if (testConfig.get("browser").equals("ie")) {
             System.out.println("expectedMessage is changed for IE");
             // code to change expected message
         }
-
 
 
         // Verifications

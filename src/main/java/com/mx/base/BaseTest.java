@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class BaseTest {
 
     protected WebDriver driver;
-    protected HashMap<String, String> testConfig = new HashMap<String,String>();
+    protected HashMap<String, String> testConfig = new HashMap<String, String>();
 
     @DataProvider(name = "negativeLoginData")
     public static Object[][] negativeLoginData() {
@@ -21,7 +21,9 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     protected void setUp(@Optional("chrome") String browser) {
-        driver = BrowserDriverFactory.createDriver(browser);
+        //driver = BrowserDriverFactory.createDriver(browser);
+        BrowserDriverFactory factory = new BrowserDriverFactory(browser);
+        driver = factory.createDriver();
         testConfig.put("browser", browser);
 
     }

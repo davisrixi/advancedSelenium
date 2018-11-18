@@ -3,32 +3,35 @@ package com.mx.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowserDriverFactory {
 
-    public static WebDriver createDriver(String browser) {
-        System.out.println("[Setting up driver: " + browser + "]");
-        WebDriver driver = null;
-        browser = browser.toLowerCase();
+    private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private String browser;
 
+    public BrowserDriverFactory(String browser) {
+        this.browser = browser.toLowerCase();
+    }
+
+    public WebDriver createDriver() {
+        System.out.println("[Setting up driver: " + browser + "]");
         switch (browser) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-                driver = new ChromeDriver();
+                driver.set(new ChromeDriver());
                 break;
 
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
-                driver = new FirefoxDriver();
+                driver.set(new FirefoxDriver());
                 break;
 
             case "safari":
-                driver = new SafariDriver();
+                driver.set(new FirefoxDriver());
                 break;
         }
 
-        return driver;
+        return driver.get();
     }
 
 }
