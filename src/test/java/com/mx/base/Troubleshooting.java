@@ -14,7 +14,7 @@ public class Troubleshooting extends BaseTest {
     public void waitTest() {
         // Opening page
         driver.get("http://the-internet.herokuapp.com/dynamic_loading/2");
-        System.out.println("Page opened!");
+        log.info("Page opened!");
 
         // Clicking start button
         WebElement startButton = driver.findElement(By.xpath("//button"));
@@ -35,11 +35,11 @@ public class Troubleshooting extends BaseTest {
     public void visibilityTest() {
         // Opening page
         driver.get("http://the-internet.herokuapp.com/dynamic_loading/1");
-        System.out.println("Page opened!");
+        log.info("Page opened!");
 
         // Clicking start button
         WebElement startButton = driver.findElement(By.xpath("//button"));
-        System.out.println("Is Start button visible before click: " + startButton.isDisplayed());
+        log.info("Is Start button visible before click: " + startButton.isDisplayed());
         startButton.click();
 
         // Waiting for Hello World! text
@@ -51,7 +51,7 @@ public class Troubleshooting extends BaseTest {
         String text = finishText.getText();
         Assert.assertTrue(text.equals("Hello World!"), "'Hello World! text is not present on the page.'");
 
-        System.out.println("Is Start button visible after click: " + startButton.isDisplayed());
+        log.info("Is Start button visible after click: " + startButton.isDisplayed());
     }
 
 
@@ -59,7 +59,7 @@ public class Troubleshooting extends BaseTest {
     public void staleElementTest() {
         // Opening page
         driver.get("http://the-internet.herokuapp.com/notification_message_rendered");
-        System.out.println("Page opened!");
+        log.info("Page opened!");
 
         WebElement link = driver.findElement(By.linkText("Click here"));
         link.click();
@@ -69,22 +69,22 @@ public class Troubleshooting extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("flash")));
 
         WebElement message = driver.findElement(By.id("flash"));
-        System.out.println("Message: " + message.getText());
+        log.info("Message: " + message.getText());
 
         link = driver.findElement(By.linkText("Click here"));
         link.click();
         WebElement message2 = driver.findElement(By.id("flash"));
-        System.out.println("Message: " + message2.getText());
+        log.info("Message: " + message2.getText());
 
         link = driver.findElement(By.linkText("Click here"));
         link.click();
         WebElement message3 = driver.findElement(By.id("flash"));
-        System.out.println("Message: " + message3.getText());
+        log.info("Message: " + message3.getText());
 
         link = driver.findElement(By.linkText("Click here"));
         link.click();
         WebElement message4 = driver.findElement(By.id("flash"));
-        System.out.println("Message: " + message4.getText());
+        log.info("Message: " + message4.getText());
     }
 
 
@@ -92,7 +92,7 @@ public class Troubleshooting extends BaseTest {
     public void otherTest() {
         // Opening page
         driver.get("http://the-internet.herokuapp.com/hovers");
-        System.out.println("Page opened!");
+        log.info("Page opened!");
 
         sleep(3000);
         //JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;

@@ -1,5 +1,6 @@
 package com.mx.base;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -14,16 +15,18 @@ public class BasePageObject {
 
     protected WebDriver driver;
     protected HashMap<String, String> testConfig;
+    protected Logger log;
 
-    public BasePageObject(WebDriver driver, HashMap<String, String> testConfig) {
+    public BasePageObject(WebDriver driver, HashMap<String, String> testConfig, Logger log) {
         this.driver = driver;
         this.testConfig = testConfig;
+        this.log = log;
     }
 
     protected void openUrl(String url) {
-        System.out.println("Opening page: " + url);
+        log.info("Opening page: " + url);
         driver.get(url);
-        System.out.println("Page opened.");
+        log.info("Page opened.");
     }
 
     protected WebElement find(By locator) {

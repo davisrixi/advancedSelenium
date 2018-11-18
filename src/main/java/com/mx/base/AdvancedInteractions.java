@@ -14,7 +14,7 @@ public class AdvancedInteractions extends BaseTest {
     public void newWindowsTest() {
         // Opening page
         driver.get("http://the-internet.herokuapp.com/windows");
-        System.out.println("Page opened!");
+        log.info("Page opened!");
 
         sleep(3000);
 
@@ -29,8 +29,8 @@ public class AdvancedInteractions extends BaseTest {
         sleep(2000);
 
         // Print page title and url after link click
-        System.out.println("Page title after click: " + driver.getTitle());
-        System.out.println("Page url after click: " + driver.getCurrentUrl());
+        log.info("Page title after click: " + driver.getTitle());
+        log.info("Page url after click: " + driver.getCurrentUrl());
 
 
         // Switching to new windows
@@ -48,15 +48,15 @@ public class AdvancedInteractions extends BaseTest {
         }
 
         // Print page title and url after switch to new window
-        System.out.println("Page title after switch: " + driver.getTitle());
-        System.out.println("Page url after switch: " + driver.getCurrentUrl());
+        log.info("Page title after switch: " + driver.getTitle());
+        log.info("Page url after switch: " + driver.getCurrentUrl());
     }
 
     @Test
     public void iframeTest() {
         //Opening page
         driver.get("http://the-internet.herokuapp.com/iframe");
-        System.out.println("Page opened");
+        log.info("Page opened");
 
         sleep(3000);
 
@@ -70,7 +70,6 @@ public class AdvancedInteractions extends BaseTest {
         sleep(3000);
 
 
-
         // Typing text
         WebElement textArea = driver.findElement(By.xpath("//body[@id='tinymce']/p"));
         textArea.clear();
@@ -82,7 +81,7 @@ public class AdvancedInteractions extends BaseTest {
 
         sleep(5000);
 
-        System.out.println("The end of text");
+        log.info("The end of text");
     }
 
     public void sleep(long millis) {
