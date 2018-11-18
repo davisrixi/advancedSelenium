@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="WorkWithFiles-Suite" verbose="1">
+    <test name="WorkWithFiles-Test">
+        <classes>
+            <class name="com.mx.base.WorkWithFiles">
+            </class>
+        </classes>
+    </test>
+</suite>

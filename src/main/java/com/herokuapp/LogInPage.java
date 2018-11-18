@@ -16,7 +16,7 @@ public class LogInPage extends BasePageObject {
     private String logInPageUrl = "http://the-internet.herokuapp.com/login";
 
     public LogInPage(WebDriver driver, HashMap<String, String> testConfig, Logger log) {
-        super(driver, testConfig,log);
+        super(driver, testConfig, log);
     }
 
     public SecurePage logIn(String username, String password) {
