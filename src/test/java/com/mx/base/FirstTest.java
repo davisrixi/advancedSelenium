@@ -25,7 +25,7 @@ public class FirstTest extends BaseTest {
         takeScreenshot("Opened_Secure_Page");
 
         //Create expected message for IE
-        String expectedMessage = "You logged into a secure area!";
+        String expectedMessage = "You logged into a secure area!Broken";
         if (testConfig.get("browser").equals("ie")) {
             log.info("expectedMessage is changed for IE");
             // code to change expected message

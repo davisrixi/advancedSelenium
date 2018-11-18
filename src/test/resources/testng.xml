@@ -1,14 +1,23 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1">
+<suite name="Big Suite" verbose="1">
+
+    <listeners>
+        <listener class-name="com.mx.base.ExtentReportListener"></listener>
+    </listeners>
+
+    <test name="FirstTest">
+        <parameter name="username" value="tomsmith"></parameter>
+        <parameter name="password" value="SuperSecretPassword!"></parameter>
+        <classes>
+            <class name="com.mx.base.FirstTest">
+            </class>
+        </classes>
+    </test>
 
     <test name="Troubleshooting">
         <classes>
             <class name="com.mx.base.Troubleshooting">
-                <methods>
-                    <include name="waitTest"></include>
-                    <include name="visibilityTest"></include>
-                </methods>
             </class>
         </classes>
     </test>
