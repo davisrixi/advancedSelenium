@@ -4,6 +4,8 @@ import com.mx.base.BasePageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.HashMap;
+
 public class LogInPage extends BasePageObject {
 
     By usernameLocator = By.id("username");
@@ -12,8 +14,8 @@ public class LogInPage extends BasePageObject {
     By errorMessageLocator = By.id("flash-messages");
     private String logInPageUrl = "http://the-internet.herokuapp.com/login";
 
-    public LogInPage(WebDriver driver) {
-        super(driver);
+    public LogInPage(WebDriver driver, HashMap<String, String> testConfig) {
+        super(driver, testConfig);
     }
 
     public SecurePage logIn(String username, String password) {
@@ -24,7 +26,15 @@ public class LogInPage extends BasePageObject {
         System.out.println("Clicking Login button");
         find(loginButtonLocator).click();
 
-        return new SecurePage(driver);
+
+
+        if(testConfig.get("browser").equals("firefox")){
+            System.out.println("Additional click needs to be done in firefox");
+            // code to click some kind of confirmation after LogIn button clicked
+        }
+
+
+        return new SecurePage(driver, testConfig);
     }
 
     public void negativeLogIn(String username, String password) {

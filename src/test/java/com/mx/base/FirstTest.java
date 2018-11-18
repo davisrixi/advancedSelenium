@@ -15,16 +15,26 @@ public class FirstTest extends BaseTest {
     @Parameters({"username", "password"})
     public void firstTest(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
-        LogInPage loginPage = new LogInPage(driver);
+        LogInPage loginPage = new LogInPage(driver, testConfig);
         loginPage.open();
 
+        // Clicking LogIn button
         SecurePage securePage = loginPage.logIn(username, password);
         securePage.waitForSecurePage(10);
 
+        //Create expected message for IE
+        String expectedMessage = "You logged into a secure area!";
+        if(testConfig.get("browser").equals("ie")){
+            System.out.println("expectedMessage is changed for IE");
+            // code to change expected message
+        }
+
+
+
         // Verifications
         softAssert.assertTrue(securePage.isLogOutButtonVisible(), "LogOut button is not displayed.");
-        softAssert.assertTrue(securePage.getPageSource().contains("You logged into a secure area!"),
-                "Page source doesn't contain expected text: 'You logged into a secure area!'");
+        softAssert.assertTrue(securePage.getPageSource().contains(expectedMessage),
+                "Page source doesn't contain expected text: " + expectedMessage);
 
         softAssert.assertAll();
     }
@@ -36,7 +46,7 @@ public class FirstTest extends BaseTest {
         String password = testData.get("password");
         String expectedErrorMessage = testData.get("expectedError");
 
-        LogInPage logInPage = new LogInPage(driver);
+        LogInPage logInPage = new LogInPage(driver, testConfig);
         logInPage.open();
 
         //Clicking LogIn button

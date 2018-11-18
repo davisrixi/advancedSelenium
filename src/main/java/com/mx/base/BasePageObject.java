@@ -8,12 +8,16 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
+
 public class BasePageObject {
 
     protected WebDriver driver;
+    protected HashMap<String, String> testConfig;
 
-    public BasePageObject(WebDriver driver) {
+    public BasePageObject(WebDriver driver, HashMap<String, String> testConfig) {
         this.driver = driver;
+        this.testConfig = testConfig;
     }
 
     protected void openUrl(String url) {

@@ -4,13 +4,15 @@ import com.mx.base.BasePageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.HashMap;
+
 public class SecurePage extends BasePageObject {
 
     By logOutButtonLocator = By.xpath("//a[@class='button secondary radius']");
 
 
-    public SecurePage(WebDriver driver) {
-        super(driver);
+    public SecurePage(WebDriver driver, HashMap<String, String> testConfig) {
+        super(driver, testConfig);
     }
 
 
