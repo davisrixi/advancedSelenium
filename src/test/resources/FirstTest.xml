@@ -1,8 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="FirstTest-Suite" verbose="1">
-    <parameter name="browser" value="firefox"></parameter>
-
+    <parameter name="browser" value="chrome"></parameter>
+    <listeners>
+        <listener class-name="com.mx.base.TestListener"></listener>
+    </listeners>
 
     <test name="FirstTest-test">
         <parameter name="username" value="tomsmith"></parameter>
