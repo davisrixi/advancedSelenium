@@ -60,6 +60,12 @@ public class BrowserDriverFactory {
                 driver.set(new FirefoxDriver(firefoxOptions));
                 break;
 
+            case "chromeprofile":
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("user-data-dir=/src/main/resources/ChromeProfile");
+                driver.set(new ChromeDriver(options));
+                break;
         }
 
         return driver.get();

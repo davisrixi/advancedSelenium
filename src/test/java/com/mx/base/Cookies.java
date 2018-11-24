@@ -1,9 +1,6 @@
 package com.mx.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Cookies extends BaseTest {
@@ -25,7 +22,7 @@ public class Cookies extends BaseTest {
     private void setCookies() {
         log.info("* Adding cookie.");
         driver.get("http://echoecho.com/");
-        Cookie ck = new Cookie("username", "Davis", ".echoecho.com","/",null);
+        Cookie ck = new Cookie("username", "Davis", ".echoecho.com", "/", null);
         driver.manage().addCookie(ck);
         log.info("* Cookie added.");
     }
