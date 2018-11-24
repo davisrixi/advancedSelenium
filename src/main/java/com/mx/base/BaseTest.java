@@ -32,12 +32,14 @@ public class BaseTest {
     }
 
     protected void takeScreenshot(String fileName) {
-        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String path = System.getProperty("user.dir") + "//test-output//screenshots//" + fileName + ".png";
-        try {
-            FileUtils.copyFile(srcFile, new File(path));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!testConfig.get("browser").equals("htmlunit")) {
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String path = System.getProperty("user.dir") + "//test-output//screenshots//" + fileName + ".png";
+            try {
+                FileUtils.copyFile(srcFile, new File(path));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -13,7 +13,7 @@ public class FirstTest extends BaseTest {
 
     @Test
     @Parameters({"username", "password"})
-    public void firstTest(String username, String password) {
+    public void positiveLogInTest(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
         LogInPage loginPage = new LogInPage(driver, testConfig, log);
         loginPage.open();
@@ -25,7 +25,7 @@ public class FirstTest extends BaseTest {
         takeScreenshot("Opened_Secure_Page");
 
         //Create expected message for IE
-        String expectedMessage = "You logged into a secure area!Broken";
+        String expectedMessage = "You logged into a secure area!";
         if (testConfig.get("browser").equals("ie")) {
             log.info("expectedMessage is changed for IE");
             // code to change expected message

@@ -10,7 +10,7 @@
         <classes>
             <class name="com.mx.base.FirstTest">
                 <methods>
-                    <include name="firstTest"></include>
+                    <include name="positiveLogInTest"></include>
                 </methods>
             </class>
         </classes>
@@ -20,7 +20,7 @@
         <classes>
             <class name="com.mx.base.FirstTest">
                 <methods>
-                    <include name="firstTest"></include>
+                    <include name="positiveLogInTest"></include>
                 </methods>
             </class>
         </classes>
@@ -30,7 +30,7 @@
         <classes>
             <class name="com.mx.base.FirstTest">
                 <methods>
-                    <include name="firstTest"></include>
+                    <include name="positiveLogInTest"></include>
                 </methods>
             </class>
         </classes>
