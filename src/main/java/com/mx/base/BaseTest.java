@@ -51,6 +51,9 @@ public class BaseTest {
         driver = factory.createDriver();
         testConfig.put("browser", browser);
 
+        // maximize browser window
+        //driver.manage().window().maximize();
+
         String testName = ctx.getCurrentXmlTest().getName();
         log = LogManager.getLogger(testName);
     }

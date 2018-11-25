@@ -8,6 +8,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class BrowserDriverFactory {
 
@@ -66,6 +71,18 @@ public class BrowserDriverFactory {
                 options.addArguments("user-data-dir=/src/main/resources/ChromeProfile");
                 driver.set(new ChromeDriver(options));
                 break;
+
+            case "chromenode":
+                String hubUrl = "http://192.168.1.19:4444/wd/hub";
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setBrowserName(DesiredCapabilities.chrome().getBrowserName());
+                try {
+                    driver.set(new RemoteWebDriver(new URL(hubUrl), capabilities));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;
+
         }
 
         return driver.get();

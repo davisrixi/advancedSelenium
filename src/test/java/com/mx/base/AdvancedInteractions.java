@@ -18,10 +18,6 @@ public class AdvancedInteractions extends BaseTest {
 
         sleep(3000);
 
-        // Maximize windows
-        //driver.manage().window().maximize();
-        //sleep(1000);
-
         // Clicking link
         WebElement link = driver.findElement(By.linkText("Click Here"));
         link.click();
@@ -59,9 +55,6 @@ public class AdvancedInteractions extends BaseTest {
         log.info("Page opened");
 
         sleep(3000);
-
-        // Maximize windows
-        //driver.manage().window().maximize();
 
         // Switching to iframe
         WebElement iFrame = driver.findElement(By.tagName("iframe"));

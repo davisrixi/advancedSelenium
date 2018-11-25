@@ -15,10 +15,6 @@ public class WorkWithFiles extends BaseTest {
 
         sleep(3000);
 
-        // Maximize windows
-        //driver.manage().window().maximize();
-        //sleep(1000);
-
         // Selecting file
         //String filePath = "/Users/davisrixi/dev/selenium/some-file.txt";
         String filePath = System.getProperty("user.dir") + "//src//main/resources//log4j2.xml";
