@@ -44,17 +44,24 @@ public class BaseTest {
     }
 
     @BeforeMethod(alwaysRun = true)
-    @Parameters("browser")
-    protected void setUp(@Optional("chrome") String browser, ITestContext ctx) {
+    @Parameters({"browser", "platform", "environment"})
+    protected void setUp(@Optional("chrome") String browser, @Optional String platform, @Optional("local") String environment, ITestContext ctx) {
+
+        String testName = ctx.getCurrentXmlTest().getName();
+
         //driver = BrowserDriverFactory.createDriver(browser);
-        BrowserDriverFactory factory = new BrowserDriverFactory(browser);
-        driver = factory.createDriver();
+        BrowserDriverFactory factory = new BrowserDriverFactory(browser,platform,testName);
+
+        if (environment.equals("SauceLabs")) {
+            driver = factory.createDriveSauce();
+        } else {
+            driver = factory.createDriver();
+        }
         testConfig.put("browser", browser);
 
         // maximize browser window
         //driver.manage().window().maximize();
 
-        String testName = ctx.getCurrentXmlTest().getName();
         log = LogManager.getLogger(testName);
     }
 

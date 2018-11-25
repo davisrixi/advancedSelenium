@@ -18,9 +18,13 @@ public class BrowserDriverFactory {
 
     private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String browser;
+    private String platform;
+    private String name;
 
-    public BrowserDriverFactory(String browser) {
+    public BrowserDriverFactory(String browser, String platform, String name) {
         this.browser = browser.toLowerCase();
+        this.platform = platform;
+        this.name = name;
     }
 
     public WebDriver createDriver() {
@@ -88,4 +92,31 @@ public class BrowserDriverFactory {
         return driver.get();
     }
 
+    public WebDriver createDriveSauce() {
+        System.out.println("[Setting up driver: " + browser + " on SauceLabs]");
+        String username = "davisrixi";
+        String accessKey = "6b72f5fb-0e28-4383-8968-50263048328c";
+        String url = "http://" + username + ":" + accessKey + "@ondemand.saucelabs.com:80/wd/hub";
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browserName", browser);
+        if (platform == null) {
+            caps.setCapability("platform", "macOS 10.13");
+        } else {
+            caps.setCapability("platform", platform);
+        }
+
+        caps.setCapability("name" , name);
+
+        try {
+            driver.set(new RemoteWebDriver(new URL(url), caps));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+
+        return driver.get();
+
+
+    }
 }
