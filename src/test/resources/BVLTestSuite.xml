@@ -1,0 +1,40 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CBTTest-Suite" verbose="1" parallel="tests" thread-count="3">
+    <parameter name="environment" value="CBT"></parameter>
+
+
+    <test name="LogInTest-Chrome">
+        <parameter name="browser" value="Chrome"></parameter>
+        <parameter name="platform" value="Windows 10"></parameter>
+        <classes>
+            <class name="com.mx.base.BVLCBTTest">
+                <methods>
+                    <include name="loginTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+   <!-- <test name="LogInTest-Firefox">
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="platform" value="Windows 7"></parameter>
+        <classes>
+            <class name="com.mx.base.BVLCBTTest">
+                <methods>
+                    <include name="loginTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="LogInTest-Safari">
+        <parameter name="browser" value="safari"></parameter>
+        <parameter name="platform" value="macOS 10.13"></parameter>
+        <classes>
+            <class name="com.mx.base.BVLCBTTest">
+                <methods>
+                    <include name="loginTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>-->
+</suite>

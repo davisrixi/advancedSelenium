@@ -1,5 +1,6 @@
 package com.mx.base;
 
+import com.mashape.unirest.http.Unirest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,6 +21,9 @@ public class BrowserDriverFactory {
     private String browser;
     private String platform;
     private String name;
+
+    private CBTAPI api;
+
 
     public BrowserDriverFactory(String browser, String platform, String name) {
         this.browser = browser.toLowerCase();
@@ -94,8 +98,8 @@ public class BrowserDriverFactory {
 
     public WebDriver createDriveSauce() {
         System.out.println("[Setting up driver: " + browser + " on SauceLabs]");
-        String username = "davisrixi";
-        String accessKey = "6b72f5fb-0e28-4383-8968-50263048328c";
+        String username = "jorgebastidas";
+        String accessKey = "e211bf2e-47fc-45bd-b186-1f94cfda79ca";
         String url = "http://" + username + ":" + accessKey + "@ondemand.saucelabs.com:80/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -106,7 +110,7 @@ public class BrowserDriverFactory {
             caps.setCapability("platform", platform);
         }
 
-        caps.setCapability("name" , name);
+        caps.setCapability("name", name);
 
         try {
             driver.set(new RemoteWebDriver(new URL(url), caps));
@@ -119,4 +123,41 @@ public class BrowserDriverFactory {
 
 
     }
+
+    public WebDriver createDriveCBT() {
+        System.out.println("[Setting up driver: " + browser + " on CBT]");
+
+        String username = "dari3ndoomed%40gmail.com"; // Your username
+        String authkey = "u7deff900553b8f0";  // Your authkey
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        caps.setCapability("name", name);
+        caps.setCapability("build", "1.0");
+        caps.setCapability("browserName", browser);
+        caps.setCapability("version", "72");
+        if (platform == null) {
+            caps.setCapability("platform", "macOS 10.13");
+        } else {
+            caps.setCapability("platform", platform);
+        }
+        caps.setCapability("screenResolution", "1366x768");
+        caps.setCapability("record_video", "true");
+        caps.setCapability("record_network", "false");
+
+        try {
+            RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey + "@hub.crossbrowsertesting.com:80/wd/hub"), caps);
+            driver.set(remoteWebDriver);
+            System.out.println(remoteWebDriver.getSessionId());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("[Finished Setting up driver: " + browser + " on CBT]");
+
+        return driver.get();
+
+    }
+
+
 }

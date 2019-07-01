@@ -54,7 +54,12 @@ public class BaseTest {
 
         if (environment.equals("SauceLabs")) {
             driver = factory.createDriveSauce();
-        } else {
+        }
+
+        else if(environment.equals("CBT")){
+            driver = factory.createDriveCBT();
+
+        }else {
             driver = factory.createDriver();
         }
         testConfig.put("browser", browser);
